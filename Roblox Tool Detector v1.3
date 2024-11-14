@@ -1,0 +1,274 @@
+-- Tool Detector v1.3
+-- Made by @RoExoploit
+
+-- Anthonys Acl Anti Chat Logger
+loadstring(game:HttpGet("https://raw.githubusercontent.com/AnthonyIsntHere/anthonysrepository/main/scripts/AntiChatLogger.lua", true))()
+
+-- Tool Detector v1.3 Loader
+local ChatService = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest
+
+local chatMessage = "☑ | Tool Detector v1.3 was loaded successfully! Made by @RoExoploit."
+
+ChatService:FireServer(chatMessage, "All")
+
+print(chatMessage)
+
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Frame = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local TextButton = Instance.new("TextButton")
+local TextButton_2 = Instance.new("TextButton")
+local TextButton_3 = Instance.new("TextButton")
+local TextButton_4 = Instance.new("TextButton")
+local TextButton_5 = Instance.new("TextButton")
+local TextButton_6 = Instance.new("TextButton")
+local TextButton_7 = Instance.new("TextButton")
+local TextButton_8 = Instance.new("TextButton")
+
+--Properties:
+
+ScreenGui.Parent = game.Players.LocalPlayer:WaitForChild("PlayerGui")
+ScreenGui.ResetOnSpawn = false
+
+Frame.Parent = ScreenGui
+Frame.BackgroundColor3 = Color3.fromRGB(24, 0, 71)
+Frame.BorderColor3 = Color3.fromRGB(0, 0, 0)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0.397219926, 0, 0.176687524, 0)
+Frame.Size = UDim2.new(0, 280, 0, 350)
+Frame.Active = true
+Frame.Draggable = true
+
+TextLabel.Parent = Frame
+TextLabel.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextLabel.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, -0.000586546084, 0)
+TextLabel.Size = UDim2.new(0, 280, 0, 39)
+TextLabel.Font = Enum.Font.DenkOne
+TextLabel.Text = "Tool Detector v1.3"
+TextLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel.TextSize = 35.000
+
+TextLabel_2.Parent = Frame
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextLabel_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, 0.887444913, 0)
+TextLabel_2.Size = UDim2.new(0, 280, 0, 39)
+TextLabel_2.Font = Enum.Font.DenkOne
+TextLabel_2.Text = "Made by @RoExoploit"
+TextLabel_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextLabel_2.TextSize = 30.000
+
+TextButton.Parent = Frame
+TextButton.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.BorderSizePixel = 0
+TextButton.Position = UDim2.new(0.0357142873, 0, 0.169118568, 0)
+TextButton.Size = UDim2.new(0, 120, 0, 39)
+TextButton.Font = Enum.Font.DenkOne
+TextButton.Text = "Tools Detect"
+TextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton.TextSize = 20.000
+TextButton.MouseButton1Down:connect(function()
+	local function checkBackpacksOnce()
+		local toolsFound = false
+
+		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents")
+			:WaitForChild("SayMessageRequest"):FireServer("[Tool Detector v1.3]: Write in chat /console or press F9 to see the results.", "All")
+
+		for _, player in pairs(game.Players:GetPlayers()) do
+			local backpack = player:FindFirstChild("Backpack")
+
+			if backpack then
+				for _, item in pairs(backpack:GetChildren()) do
+					if item:IsA("Tool") then
+						print("✔ | " .. player.DisplayName .. " has " .. item.Name)
+						toolsFound = true
+					end
+				end
+			end
+		end
+
+		if not toolsFound then
+			print("✖ | No tools were found.")
+		end
+	end
+
+	checkBackpacksOnce()
+end)
+
+TextButton_2.Parent = Frame
+TextButton_2.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_2.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.BorderSizePixel = 0
+TextButton_2.Position = UDim2.new(0.529999971, 0, 0.170000002, 0)
+TextButton_2.Size = UDim2.new(0, 120, 0, 39)
+TextButton_2.Font = Enum.Font.DenkOne
+TextButton_2.Text = "Tools Detect V2"
+TextButton_2.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_2.TextSize = 20.000
+TextButton_2.MouseButton1Down:connect(function()
+	local Players = game:GetService("Players")
+	local ChatService = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest
+
+	local function checkBackpacks()
+		local toolFound = false
+
+		for _, player in ipairs(Players:GetPlayers()) do
+			local backpack = player:FindFirstChild("Backpack")
+			if backpack then
+				for _, item in ipairs(backpack:GetChildren()) do
+					if item:IsA("Tool") then
+						toolFound = true
+						local message = "✔ | ".. player.DisplayName .. " has " .. item.Name
+						ChatService:FireServer(message, "All")
+					end
+				end
+			end
+		end
+
+		if not toolFound then
+			ChatService:FireServer("✖ | No tools were found.", "All")
+		end
+	end
+
+	checkBackpacks()
+end)
+
+
+TextButton_3.Parent = Frame
+TextButton_3.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_3.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_3.BorderSizePixel = 0
+TextButton_3.Position = UDim2.new(0.535714269, 0, 0.348632216, 0)
+TextButton_3.Size = UDim2.new(0, 120, 0, 39)
+TextButton_3.Font = Enum.Font.DenkOne
+TextButton_3.Text = "Tools Amount V2"
+TextButton_3.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_3.TextSize = 19.000
+TextButton_3.TextWrapped = true
+TextButton_3.MouseButton1Down:connect(function()
+	local Players = game:GetService("Players")
+	local ChatService = game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents").SayMessageRequest
+
+	local function checkBackpacks()
+		local toolsFound = false
+
+		for _, player in ipairs(Players:GetPlayers()) do
+			local backpack = player:FindFirstChild("Backpack")
+			if backpack then
+				local toolCount = 0
+				for _, item in ipairs(backpack:GetChildren()) do
+					if item:IsA("Tool") then
+						toolCount += 1
+					end
+				end
+
+				if toolCount > 0 then
+					toolsFound = true
+					local message = "✔ | " .. player.DisplayName .. " has " .. toolCount .. " tool(s)."
+					ChatService:FireServer(message, "All")
+				end
+			end
+		end
+
+		if not toolsFound then
+			ChatService:FireServer("✖ | No tools were found.", "All")
+		end
+	end
+
+	checkBackpacks()
+end)
+
+TextButton_4.Parent = Frame
+TextButton_4.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_4.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_4.BorderSizePixel = 0
+TextButton_4.Position = UDim2.new(0.0350000001, 0, 0.349999994, 0)
+TextButton_4.Size = UDim2.new(0, 120, 0, 39)
+TextButton_4.Font = Enum.Font.DenkOne
+TextButton_4.Text = "Tools Amount"
+TextButton_4.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_4.TextSize = 20.000
+TextButton_4.MouseButton1Down:connect(function()
+	local function checkBackpacksOnce()
+		local toolsFound = false
+
+		game:GetService("ReplicatedStorage"):WaitForChild("DefaultChatSystemChatEvents")
+			:WaitForChild("SayMessageRequest"):FireServer("[Tool Detector v1.3]: Write in chat /console or press F9 to see the results.", "All")
+
+		for _, player in pairs(game.Players:GetPlayers()) do
+			local backpack = player:FindFirstChild("Backpack")
+
+			if backpack then
+				local toolCount = 0
+
+				for _, item in pairs(backpack:GetChildren()) do
+					if item:IsA("Tool") then
+						toolCount = toolCount + 1
+					end
+				end
+
+				if toolCount > 0 then
+					print("✔ | " .. player.DisplayName .. " has " .. toolCount .. " tool(s).")
+					toolsFound = true
+				end
+			end
+		end
+
+		if not toolsFound then
+			print("✖ | No tools were found.")
+		end
+	end
+
+	checkBackpacksOnce()
+end)
+
+TextButton_5.Parent = Frame
+TextButton_5.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_5.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_5.BorderSizePixel = 0
+TextButton_5.Position = UDim2.new(0.0357142873, 0, 0.533860207, 0)
+TextButton_5.Size = UDim2.new(0, 120, 0, 39)
+TextButton_5.Font = Enum.Font.DenkOne
+TextButton_5.Text = "Soon"
+TextButton_5.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_5.TextSize = 30.000
+
+TextButton_6.Parent = Frame
+TextButton_6.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_6.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_6.BorderSizePixel = 0
+TextButton_6.Position = UDim2.new(0.535000026, 0, 0.535000026, 0)
+TextButton_6.Size = UDim2.new(0, 120, 0, 39)
+TextButton_6.Font = Enum.Font.DenkOne
+TextButton_6.Text = "Soon"
+TextButton_6.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_6.TextSize = 30.000
+
+TextButton_7.Parent = Frame
+TextButton_7.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_7.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_7.BorderSizePixel = 0
+TextButton_7.Position = UDim2.new(0.535714269, 0, 0.716230989, 0)
+TextButton_7.Size = UDim2.new(0, 120, 0, 39)
+TextButton_7.Font = Enum.Font.DenkOne
+TextButton_7.Text = "Soon"
+TextButton_7.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_7.TextSize = 30.000
+
+TextButton_8.Parent = Frame
+TextButton_8.BackgroundColor3 = Color3.fromRGB(35, 0, 100)
+TextButton_8.BorderColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_8.BorderSizePixel = 0
+TextButton_8.Position = UDim2.new(0.0357142873, 0, 0.716230989, 0)
+TextButton_8.Size = UDim2.new(0, 120, 0, 39)
+TextButton_8.Font = Enum.Font.DenkOne
+TextButton_8.Text = "Soon"
+TextButton_8.TextColor3 = Color3.fromRGB(0, 0, 0)
+TextButton_8.TextSize = 30.000
